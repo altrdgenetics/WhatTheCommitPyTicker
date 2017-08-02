@@ -1,3 +1,4 @@
+import os
 import random
 import urllib
 import threading
@@ -20,7 +21,7 @@ def display():
     message = f.read()
 
     if len(message) > lcdLineLimit:
-        message = message[:lcdLineLimit] + "/n" + message[lcdLineLimit:]
+        message = message[:lcdLineLimit] + os.linesep + message[lcdLineLimit:]
 
     # Setup the LCD for Display
     red = random.randint(0, 1)
@@ -32,7 +33,7 @@ def display():
         green = 1
         blue = 1
 
-    lcd.set_Color(red, green, blue)
+    lcd.set_color(red, green, blue)
     lcd.clear()
     lcd.message(message)
 
